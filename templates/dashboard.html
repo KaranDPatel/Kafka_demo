@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Usage Dashboard</title>
+</head>
+<body>
+    <h1>API Usage Statistics</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Endpoint</th>
+                <th>Action</th>
+                <th>Count</th>
+                <th>Last Called At</th>
+                <th>Previous Data</th>
+                <th>New Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for (endpoint, action), records in stats.items() %}
+            <tr>
+                <td>{{ endpoint }}</td>
+                <td>{{ action }}</td>
+                <td>{{ records|length }}</td>
+                <td>{{ records[-1]['timestamp'] }}</td>
+                <td>{{ records[-1]['previous_data'] }}</td>
+                <td>{{ records[-1]['new_data'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
